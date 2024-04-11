@@ -1,0 +1,8 @@
+npminstall @react-navigation/native @react-navigation/stack react-native-screens react-native-gesture-handler
+ npx expo install react-native-gesture-handler
+
+== rodar projeto ==
+npm run start
+
+== limpar cache ==
+npx expo start --clear 
