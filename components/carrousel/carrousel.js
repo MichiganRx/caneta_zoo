@@ -4,7 +4,7 @@ import Carousel from 'react-native-snap-carousel';
 import Productscard from './components/productscard';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
-const ITEM_WIDTH = SLIDER_WIDTH * 0.5;
+const ITEM_WIDTH = SLIDER_WIDTH * 0.4;
 
 const CarouselComponent = ({ data }) => {
     const renderCarouselItem = ({ item }) => (
@@ -12,7 +12,6 @@ const CarouselComponent = ({ data }) => {
             <Productscard
                 description={item.description}
                 imageSource={item.imageSource}
-                onPress={() => console.log('Card pressionado')}
             />
         </View>
     );
@@ -25,6 +24,7 @@ const CarouselComponent = ({ data }) => {
                 sliderWidth={SLIDER_WIDTH}
                 itemWidth={ITEM_WIDTH}
                 useScrollView={true}
+                loop={true}
             />
         </View>
     );

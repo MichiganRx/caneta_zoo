@@ -3,34 +3,36 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
 
     container: {
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
         borderRadius: 8,
         padding: 16,
         alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#00BFFF',
+        gap: 10,
     },
     
     image: {
         width: '80%',
-        height: 180,
+        height: 120,
         borderRadius: 8,
     },
 
     description: {
-        marginTop: 8,
-        fontSize: 16,
+        color: '#4682B4',
+        fontSize: 14,
     },
 
     button: {
-        marginTop: 16,
-        backgroundColor: 'blue',
+        backgroundColor: '#3CB371',
         borderRadius: 8,
-        paddingVertical: 8,
-        paddingHorizontal: 16,
+        paddingVertical: 4,
+        paddingHorizontal: 10,
     },
     
     buttonText: {
         color: 'white',
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 'bold',
     },
 });
