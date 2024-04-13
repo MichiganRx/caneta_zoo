@@ -1,42 +1,85 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, Image, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from "./styles";
 
 export default function Header() {
   const [menuVisible, setMenuVisible] = useState(false);
+  const navigation = useNavigation();
 
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
   };
 
+  const navigateToCart = () => {
+    navigation.navigate('CartScreen');
+  };
+
   return (
     <View style={styles.header}>
-      <TouchableOpacity onPress={toggleMenu} style={styles.containerMenuIcon}>
-        <Image 
-          style={styles.menuIcon}
-          source={require("../.././assets/menu.png")}
-        />
-      </TouchableOpacity>
-      {/* <Image 
-        style={{height:35, width:35}}
-        source={require(".././assets/floco-de-neve.png")}
-      /> */}
-      <Text style={styles.nameApp}>Caneta Zoo</Text>
+      <View style={styles.containerContentHeader}>
+        <TouchableOpacity onPress={toggleMenu}>
+          <Image 
+            style={{height:20, width:20}}
+            source={require("../.././assets/menu.png")}
+          />
+        </TouchableOpacity>
+        <View style={styles.containerLogo}>
+          <Image 
+            style={{height:25, width:80}}
+            source={require("../../assets/logo.png")}
+          />
+          <Image 
+            style={{height:25, width:44}}
+            source={require("../../assets/logo2.png")}
+          />
+        </View>
+        <TouchableOpacity onPress={navigateToCart}>
+          <Image 
+            style={{height:20, width:20}}
+            source={require("../.././assets/cart.png")}
+          />
+        </TouchableOpacity>
+      </View>
       {menuVisible && (
         <View style={styles.menuContainer}>
-          <View style={styles.menu}>
-            <TouchableOpacity onPress={toggleMenu} style={styles.containerClose}>
-              <Image 
-                style={styles.close}
-                source={require("../.././assets/fechar.png")}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => console.log('Link 1 clicado')}>
-              <Text style={styles.menuItem}>Link 1</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => console.log('Link 2 clicado')}>
-              <Text style={styles.menuItem}>Link 2</Text>
-            </TouchableOpacity>
+          <View style={styles.background}>
+            <View style={styles.menu}>
+              <TouchableOpacity onPress={toggleMenu} style={styles.containerClose}>
+                <Image 
+                  style={{height:15, width:15}}
+                  source={require("../.././assets/close.png")}
+                />
+              </TouchableOpacity>
+              <View style={styles.containerInfoUser}>
+                <Image 
+                    style={{height:40, width:40}}
+                    source={require("../.././assets/user.png")}
+                />
+                <Text style={styles.nameUser}>Amanda</Text>
+              </View>
+              <TouchableOpacity onPress={() => console.log('Link 1 clicado')} style={styles.optionsMenu}>
+                <Image 
+                  style={{height:15, width:15}}
+                  source={require("../.././assets/home.png")}
+                />
+                <Text style={styles.menuItem}>Home</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => console.log('Link 2 clicado')} style={styles.optionsMenu}>
+                <Image 
+                    style={{height:15, width:15}}
+                    source={require("../.././assets/cart.png")}
+                  />
+                <Text style={styles.menuItem}>Meu Carrinho</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => console.log('Link 2 clicado')} style={styles.optionsMenu}>
+                <Image 
+                    style={{height:15, width:15}}
+                    source={require("../.././assets/exit.png")}
+                  />
+                <Text style={styles.menuItem}>Sair</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       )}

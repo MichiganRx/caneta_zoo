@@ -5,6 +5,7 @@ import Index from './pages';
 import FeedbackScreen from './pages/feedback';
 import Result from './pages/result';
 import Products from './pages/products';
+import CartScreen from './pages/CartScreen.js';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ function Navigation() {
         <Stack.Screen name="feedback" component={FeedbackScreen} />
         <Stack.Screen name="Result" component={Result} />
         <Stack.Screen name="Products" component={Products} />
+        <Stack.Screen name="CartScreen" component={CartScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

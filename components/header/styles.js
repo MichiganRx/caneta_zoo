@@ -1,58 +1,64 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    display: 'flex',
     backgroundColor: '#fff',
     alignItems: 'center',
   },
 
   header: {
-    marginTop: 20,
+    marginTop: 10,
     width: '100%',
-    padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
-    borderBottomColor: '#75a9f9',
+    borderBottomColor: '#c09edb',
     borderBottomWidth: 2,
+    padding: 10,
+    paddingTop: 20,
+    zIndex: 999,
   },
 
-  containerMenuIcon:{
-    display: 'flex',
+  containerContentHeader:{
+    flex: 1,
+    width: '100%',
+    flexDirection: 'row',
     alignItems: 'center',
-    position: 'absolute',
-    left: 20,
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
   },
 
-  menuIcon:{
-    width:30,
-    height:30,
-  },
-
-  nameApp: {
-    fontSize: 20,
-    color: '#1464f6',
-    fontWeight: 'bold',
+  containerLogo: {
+    display: 'flex',
+    flexDirection: 'row',
   },
   
   menuContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    width: '100%',
+    width: width,
     height: '100%',
+    position: 'absolute',
+  },
+
+  background: {
+    width: width,
+    height: height,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
   },
 
   menu: {
-    backgroundColor: 'rgba(225, 225, 225, 0.9)',
-    width: '40%',
-    height: '100%',
-    padding: 20,
+    alignItems: 'center',
+    backgroundColor: 'rgba(225, 225, 225, 1)',
+    width: '50%',
+    height: '96.7%',
     paddingTop: 30,
     gap: 20,
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
+    borderWidth: 2,
+    borderColor: '#c09edb',
   },
 
   containerClose: {
@@ -61,8 +67,30 @@ export default StyleSheet.create({
     top: 10,
   },
 
-  close: {
-    width: 15,
-    height: 15,
-  }
+  containerInfoUser: {
+    width: '100%',
+    alignItems: 'center',
+    borderBottomWidth: 2,
+    paddingBottom: 20,
+    borderColor: '#c09edb',
+    gap: 5,
+  },
+
+  nameUser :{
+    color: '#432659',
+    fontSize: 18,
+  },
+
+  optionsMenu: {
+    width: '100%',
+    gap: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+
+  menuItem :{
+    color: '#432659',
+    fontSize: 14,
+  },
 });

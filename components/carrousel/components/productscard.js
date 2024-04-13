@@ -1,8 +1,12 @@
 import React from 'react';
-import { Text, TouchableOpacity, Image, View} from 'react-native';
+import { View, Text, TouchableOpacity, Image, onPress, Alert } from 'react-native';
 import styles from './styles';
 
-const Productscard = ({ description, imageSource, onPress }) => {
+const Productscard = ({ description, imageSource, price, onBuy }) => {
+    const handleBuy = () => {
+        onBuy();
+        Alert.alert('', 'Produto adicionado ao carrinho!');
+    };
     return (
         <View onPress={onPress} style={styles.container}>
             <Image
@@ -10,8 +14,9 @@ const Productscard = ({ description, imageSource, onPress }) => {
                 source={imageSource}
             />
             <Text style={styles.description}>{description}</Text>
+            <Text style={styles.price}>R$ {price}</Text>
             <TouchableOpacity style={styles.button} onPress={onPress}>
-                <Text style={styles.buttonText}>Comprar</Text>
+                <Text style={styles.buttonText} onPress={handleBuy}>Comprar</Text>
             </TouchableOpacity>
         </View>
     );
