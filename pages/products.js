@@ -2,21 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, SafeAreaView } from 'react-native';
 import CarouselComponent from '../components/carrousel/carrousel';
 import Header from '../components/header/header';
-
-const CarouselItemsPencil = [
-    { description: 'Pinguim', imageSource: require('../assets/img-1.jpg') },
-    { description: 'Dinossauro', imageSource: require('../assets/img-2.jpg') },
-    { description: 'Preguiça', imageSource: require('../assets/img-3.jpg') },
-    { description: 'Peixe', imageSource: require('../assets/img-4.jpg') },
-    { description: 'Foca', imageSource: require('../assets/img-5.jpg') },
-];
-
-const CarouselItems = [
-    { description: 'Patinhas', imageSource: require('../assets/lapis-1.jpg') },
-    { description: 'Porco', imageSource: require('../assets/lapis-2.jpg') },
-    { description: 'Gato', imageSource: require('../assets/lapis-3.jpg') },
-    { description: 'Pikachu', imageSource: require('../assets/lapis-4.jpg') },
-];
+import { CarouselItems1 } from '../components/carrousel/contentCarrousel/contentCarousel';
+import { CarouselItems2 } from '../components/carrousel/contentCarrousel/contentCarousel';
+import { CarouselItems3 } from '../components/carrousel/contentCarrousel/contentCarousel';
 
 const Products = () => {
     return (
@@ -26,23 +14,33 @@ const Products = () => {
                 <View style={styles.containerProducts}>
                     <View>
                         <View style={styles.containerTitle}>
-                            <Text style={styles.title}>Caneta de Bichinhos</Text>
+                            <Text style={styles.title}>Canetas</Text>
                             <Image
                                 style={styles.imageTitle}
-                                source={require('../assets/abelha.png')}
+                                source={require('../assets/flower.png')}
                             />
                         </View>
-                        <CarouselComponent data={CarouselItemsPencil} />
+                        <CarouselComponent data={CarouselItems1} />
                     </View>
                     <View>
                         <View style={styles.containerTitle}>
-                            <Text style={{...styles.title, color: '#008000'}}>Lápis de Bichinhos</Text>
+                            <Text style={styles.title}>Lápis</Text>
                             <Image
                                 style={styles.imageTitle}
-                                source={require('../assets/tartaruga.png')}
+                                source={require('../assets/flower.png')}
                             />
                         </View>
-                        <CarouselComponent data={CarouselItems} />
+                        <CarouselComponent data={CarouselItems2} />
+                    </View>
+                    <View>
+                        <View style={styles.containerTitle}>
+                            <Text style={styles.title}>Diversos</Text>
+                            <Image
+                                style={styles.imageTitle}
+                                source={require('../assets/flower.png')}
+                            />
+                        </View>
+                        <CarouselComponent data={CarouselItems3} />
                     </View>
                 </View>
             </ScrollView>
@@ -73,13 +71,13 @@ const styles = StyleSheet.create({
         gap: 20,
         alignItems: 'center',
         borderBottomWidth: 1,
-        borderColor: '#ffd6a5',
+        borderColor: '#B0C4DE',
         paddingBottom: 10,
     },
 
     title:{
         fontSize: 16,
-        color: '#D2691E',
+        color: '#4682B4',
         fontWeight: 'bold',
     },
 

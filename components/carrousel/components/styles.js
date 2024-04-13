@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
 
     container: {
-        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
         borderRadius: 8,
         padding: 16,
         alignItems: 'center',
         borderWidth: 1,
-        borderColor: '#00BFFF',
+        borderColor: '#B0C4DE',
         gap: 10,
     },
     
@@ -21,17 +21,27 @@ export default StyleSheet.create({
     description: {
         color: '#4682B4',
         fontSize: 14,
+        fontWeight: 'bold',
+    },
+
+    price: {
+        color: '#432659',
+        fontSize: 12,
     },
 
     button: {
-        backgroundColor: '#3CB371',
+        width: '80%',
         borderRadius: 8,
         paddingVertical: 4,
         paddingHorizontal: 10,
+        borderColor: '#cbbce6',
+        backgroundColor: '#d8cdec',
+        borderWidth: 2, 
+        alignItems: 'center'
     },
     
     buttonText: {
-        color: 'white',
+        color: '#72658b',
         fontSize: 14,
         fontWeight: 'bold',
     },
