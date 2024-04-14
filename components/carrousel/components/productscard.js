@@ -1,25 +1,31 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, onPress, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../store';
 import styles from './styles';
 
-const Productscard = ({ description, imageSource, price, onBuy }) => {
-    const handleBuy = () => {
-        onBuy();
-        Alert.alert('', 'Produto adicionado ao carrinho!');
-    };
-    return (
-        <View onPress={onPress} style={styles.container}>
-            <Image
-                style={styles.image}
-                source={imageSource}
-            />
-            <Text style={styles.description}>{description}</Text>
-            <Text style={styles.price}>R$ {price}</Text>
-            <TouchableOpacity style={styles.button} onPress={onPress}>
-                <Text style={styles.buttonText} onPress={handleBuy}>Comprar</Text>
-            </TouchableOpacity>
-        </View>
-    );
-}
+const Productscard = ({ description, imageSource, price }) => {
+  const dispatch = useDispatch();
+
+  const handleBuy = () => {
+    const product = { description, imageSource, price };
+    dispatch({ type: addToCart, payload: { product } });
+    Alert.alert('', 'Produto adicionado ao carrinho!');
+  };
+
+  return (
+    <View style={styles.container}>
+      <Image style={styles.image} source={imageSource} />
+      <Text style={styles.description}>{description}</Text>
+      <Text style={styles.price}>R$ {price}</Text>
+      <TouchableOpacity style={styles.button} onPress={handleBuy}>
+        <Image 
+            style={{height:18, width:18}}
+            source={require("../../../assets/add-to-cart.png")}
+        />
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 export default Productscard;
