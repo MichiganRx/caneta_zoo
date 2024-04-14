@@ -1,11 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, Image, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Importe AsyncStorage
 import styles from "./styles";
 
 export default function Header() {
   const [menuVisible, setMenuVisible] = useState(false);
+  const [userImage, setUserImage] = useState(require("../../assets/user.png")); // Imagem padrão
+  const [username, setUsername] = useState(''); // Nome de usuário
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const storedImage = await AsyncStorage.getItem('userImage');
+        const storedUsername = await AsyncStorage.getItem('username');
+        if (storedImage !== null) {
+          setUserImage({ uri: storedImage }); // Define a imagem do usuário recuperada do AsyncStorage
+        }
+        if (storedUsername !== null) {
+          setUsername(storedUsername); // Define o nome de usuário recuperado do AsyncStorage
+        }
+      } catch (error) {
+        console.log('Error retrieving user data:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
@@ -53,26 +74,26 @@ export default function Header() {
               </TouchableOpacity>
               <View style={styles.containerInfoUser}>
                 <Image 
-                    style={{height:40, width:40}}
-                    source={require("../.././assets/user.png")}
+                    style={{height:50, width:50, borderRadius:50,}}
+                    source={userImage}
                 />
-                <Text style={styles.nameUser}>Amanda</Text>
+                <Text style={styles.nameUser}>{username}</Text>
               </View>
-              <TouchableOpacity onPress={() => console.log('Link 1 clicado')} style={styles.optionsMenu}>
+              <TouchableOpacity onPress={() => navigation.navigate('Products')} style={styles.optionsMenu}>
                 <Image 
                   style={{height:15, width:15}}
                   source={require("../.././assets/home.png")}
                 />
                 <Text style={styles.menuItem}>Home</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => console.log('Link 2 clicado')} style={styles.optionsMenu}>
+              <TouchableOpacity onPress={() => navigation.navigate('CartScreen')} style={styles.optionsMenu}>
                 <Image 
                     style={{height:15, width:15}}
                     source={require("../.././assets/cart.png")}
                   />
                 <Text style={styles.menuItem}>Meu Carrinho</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => console.log('Link 2 clicado')} style={styles.optionsMenu}>
+              <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.optionsMenu}>
                 <Image 
                     style={{height:15, width:15}}
                     source={require("../.././assets/exit.png")}

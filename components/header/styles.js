@@ -71,14 +71,14 @@ export default StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     borderBottomWidth: 2,
-    paddingBottom: 20,
+    paddingBottom: 10,
     borderColor: '#c09edb',
-    gap: 5,
+    gap: 10,
   },
 
   nameUser :{
     color: '#432659',
-    fontSize: 18,
+    fontSize: 16,
   },
 
   optionsMenu: {

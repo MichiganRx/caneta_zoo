@@ -1,25 +1,25 @@
-import * as React from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Index from './pages';
-import FeedbackScreen from './pages/feedback';
-import Result from './pages/result';
-import Products from './pages/products';
-import CartScreen from './pages/CartScreen.js';
+import { Provider } from 'react-redux';
+import store from './store';
+import Products from './pages/products/products';
+import CartScreen from './pages/cart/cart';
+import Login from './pages/login/login';
 
 const Stack = createStackNavigator();
 
 function Navigation() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Products" screenOptions={{headerShown: false}}>
-        <Stack.Screen name="TelaInicial" component={Index} />
-        <Stack.Screen name="feedback" component={FeedbackScreen} />
-        <Stack.Screen name="Result" component={Result} />
-        <Stack.Screen name="Products" component={Products} />
-        <Stack.Screen name="CartScreen" component={CartScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Products" component={Products} />
+          <Stack.Screen name="CartScreen" component={CartScreen} />
+          <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

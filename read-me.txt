@@ -1,0 +1,13 @@
+git branch
+
+git checkout -b feature/nome_da_branch
+   
+git status
+
+git add .
+
+git status
+
+git commit -m "feat: Menssagem "
+
+git push -u origin feature/nome_da_branch
