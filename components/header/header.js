@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, Image, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Importe AsyncStorage
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from "./styles";
 
 export default function Header() {
   const [menuVisible, setMenuVisible] = useState(false);
-  const [userImage, setUserImage] = useState(require("../../assets/user.png")); // Imagem padrão
-  const [username, setUsername] = useState(''); // Nome de usuário
+  const [userImage, setUserImage] = useState(require("../../assets/user.png"));
+  const [username, setUsername] = useState('');
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -16,10 +16,10 @@ export default function Header() {
         const storedImage = await AsyncStorage.getItem('userImage');
         const storedUsername = await AsyncStorage.getItem('username');
         if (storedImage !== null) {
-          setUserImage({ uri: storedImage }); // Define a imagem do usuário recuperada do AsyncStorage
+          setUserImage({ uri: storedImage });
         }
         if (storedUsername !== null) {
-          setUsername(storedUsername); // Define o nome de usuário recuperado do AsyncStorage
+          setUsername(storedUsername);
         }
       } catch (error) {
         console.log('Error retrieving user data:', error);

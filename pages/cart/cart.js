@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCartAction } from '../../store';
-import styles from './styles'
-
+import { useNavigation } from '@react-navigation/native';
 import Header from '../../components/header/header';
+import TotalValue from '../../components/totalValue/totalValue';
+
+import styles from './styles';
 
 const CartScreen = () => {
     const cartItems = useSelector(state => state.cart.cart);
     const dispatch = useDispatch();
     const [totalPrice, setTotalPrice] = useState(0);
+    const navigation = useNavigation();
 
     useEffect(() => {
         calculateTotalPrice();
@@ -26,6 +29,10 @@ const CartScreen = () => {
 
     const handleDelete = (index) => {
         dispatch(removeFromCartAction(index));
+    };
+
+    const handlePurchase = () => {
+        navigation.navigate('Purchase', { totalPrice: totalPrice });
     };
 
     return (
@@ -49,13 +56,8 @@ const CartScreen = () => {
                     </View>
                 )}
                 keyExtractor={(item, index) => index.toString()}
-                />
-            <View style={styles.containerTotal}>
-                <Text style={styles.name}>Total: R$ {totalPrice}</Text>
-                <TouchableOpacity style={styles.buttonTotal}>
-                    <Text style={styles.buttonText}>Finalizar Compra</Text>
-                </TouchableOpacity>
-            </View>
+            />
+            <TotalValue totalPrice={totalPrice} buttonText='Finalizar Compra' onPress={handlePurchase}/>
         </View>
     );
 };

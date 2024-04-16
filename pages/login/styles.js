@@ -8,45 +8,73 @@ export default StyleSheet.create({
         paddingHorizontal: 20,
     },
 
-    input: {
-        height: 40,
+    containerLogin: {
+        width: '60%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 20,
+        borderRadius: 8,
+        borderWidth: 2,
+        borderColor: '#c09edb',
+    },
+
+    containerLogo: {
         width: '100%',
-        borderWidth: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderBottomWidth: 1,
+        paddingBottom: 10,
+        borderColor: '#c09edb',
+    },
+
+    input: {
+        width: '80%',
+        borderBottomWidth: 1,
         borderColor: 'gray',
-        marginBottom: 20,
         paddingHorizontal: 10,
+        borderColor: '#c09edb',
+        fontSize: 12,
+        marginBottom: 10,
     },
 
     button: {
-        backgroundColor: 'blue',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 5,
-        marginBottom: 20,
+        width: '60%',
+        borderRadius: 8,
+        paddingVertical: 4,
+        borderColor: '#cbbce6',
+        backgroundColor: '#d8cdec',
+        borderWidth: 2, 
+        alignItems: 'center',
+        marginTop: 20,
     },
 
     buttonText: {
-        color: 'white',
-        fontWeight: 'bold',
+        color: '#432659',
+        fontSize: 12,
     },
 
     image: {
-        width: 100,
-        height: 100,
+        width: 80,
+        height: 80,
         borderRadius: 50,
-        marginBottom: 20,
+        marginTop: 20,
+        marginBottom: 10,
     },
 
     imageButton: {
-        backgroundColor: 'gray',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 5,
+        width: '40%',
+        borderRadius: 8,
+        paddingVertical: 4,
+        borderColor: '#cbbce6',
+        borderWidth: 2, 
+        alignItems: 'center',
         marginBottom: 20,
     },
     
     imageButtonText: {
-        color: 'white',
-        fontWeight: 'bold',
+        color: '#432659',
+
+        fontSize: 12,
     },
 });
