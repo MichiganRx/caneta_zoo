@@ -8,7 +8,6 @@ import TotalValue from '../../components/totalValue/totalValue';
 import Header from '../../components/header/header';
 import styles from './styles';
 
-
 const PurchaseScreen = ({ route }) => {
     const { totalPrice } = route.params;
     const [paymentMethod, setPaymentMethod] = useState(null);
@@ -27,19 +26,38 @@ const PurchaseScreen = ({ route }) => {
     };
 
     const handleFinalize = () => {
+     
+        if (!paymentMethod || !cardNumber || !cvc || !state || !city || !address) {
+            Alert.alert(
+                'Campos Incompletos',
+                'Por favor, preencha todos os campos antes de finalizar a compra.',
+                [{ text: 'OK' }]
+            );
+            return; 
+        }
+
         dispatch(clearCartAction());
         Alert.alert(
             'Compra Finalizada',
             'Obrigada por sua compra!',
-            [
-                {
-                    text: 'OK',
-                    onPress: () => {
-                        navigation.navigate('Products');
-                    }
+            [{
+                text: 'OK',
+                onPress: () => {
+                    navigation.navigate('Products');
                 }
-            ]
+            }]
         );
+    };
+
+    const handleCardNumberChange = (text) => {
+        const formattedText = text.replace(/\D/g, '');
+        setCardNumber(formattedText);
+    };
+
+    const handleCVCChange = (text) => {
+      
+        const formattedText = text.replace(/\D/g, '');
+        setCVC(formattedText);
     };
 
     return (
@@ -82,13 +100,15 @@ const PurchaseScreen = ({ route }) => {
                                 placeholder="Número do Cartão"
                                 style={[styles.input, { width: '75%' }]} 
                                 value={cardNumber}
-                                onChangeText={setCardNumber}
+                                onChangeText={handleCardNumberChange}
+                                keyboardType="numeric" 
                             />
                             <TextInput
                                 placeholder="CVC"
                                 style={[styles.input, { width: '20%' }]}
                                 value={cvc}
-                                onChangeText={setCVC}
+                                onChangeText={handleCVCChange}
+                                keyboardType="numeric" 
                             />
                         </View>
                     </View>
