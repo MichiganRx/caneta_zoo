@@ -24,9 +24,9 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderBottomWidth: 1,
-        paddingBottom: 10,
+        paddingBottom: 15,
         borderColor: '#c09edb',
-        marginBottom: 20
+        marginBottom: 15,
     },
 
     input: {
@@ -39,6 +39,12 @@ export default StyleSheet.create({
         marginBottom: 10,
     },
 
+    title: {
+        color: '#432659',
+        fontSize: 16,
+        fontWeight: '600',
+    },
+
     button: {
         width: '60%',
         borderRadius: 8,
@@ -47,29 +53,40 @@ export default StyleSheet.create({
         backgroundColor: '#d8cdec',
         borderWidth: 2, 
         alignItems: 'center',
-        marginTop: 10,
-    },
-
-    containerLink: {
-        width: '100%',
-        marginTop: 10,
-        borderTopWidth: 1,
-        paddingHorizontal: 20,
-        borderColor: '#cbbce6',
-        paddingTop: 15,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-        
-    },
-
-    link: {
-        color: '#432659',
-        fontSize: 11,
-        fontWeight: '500'
+        marginTop: 20,
     },
 
     buttonText: {
         color: '#432659',
+        fontSize: 12,
+    },
+
+    containerImage: {
+        width: '80%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginVertical: 10
+    },
+
+    image: {
+        width: 70,
+        height: 70,
+        borderRadius: 50,
+    },
+
+    imageButton: {
+        width: '40%',
+        borderRadius: 8,
+        paddingVertical: 4,
+        borderColor: '#cbbce6',
+        borderWidth: 2, 
+        alignItems: 'center',
+    },
+    
+    imageButtonText: {
+        color: '#432659',
+
         fontSize: 12,
     },
 });

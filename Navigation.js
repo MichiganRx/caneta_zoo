@@ -7,6 +7,8 @@ import Products from './pages/products/products';
 import CartScreen from './pages/cart/cart';
 import Login from './pages/login/login';
 import Purchase from './pages/purchase/purchase';
+import UserRegistration from './pages/user-registration/user-registration';
+import PasswordReset from './pages/password-reset/password-reset';
 
 const Stack = createStackNavigator();
 
@@ -18,7 +20,9 @@ function Navigation() {
           <Stack.Screen name="Products" component={Products} />
           <Stack.Screen name="CartScreen" component={CartScreen} />
           <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="UserRegistration" component={UserRegistration} />
           <Stack.Screen name="Purchase" component={Purchase} />
+          <Stack.Screen name="PasswordReset" component={PasswordReset} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
