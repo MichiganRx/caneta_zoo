@@ -16,6 +16,7 @@ export default StyleSheet.create({
         borderColor: '#B0C4DE',
         paddingVertical: 10,
         paddingHorizontal: 20,
+        gap:20
     },
 
     description: {
@@ -83,4 +84,6 @@ export default StyleSheet.create({
         textAlign: 'center',
         color: '#555555',
     },
+    
+    
 });
