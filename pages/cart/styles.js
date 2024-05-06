@@ -73,4 +73,14 @@ export default StyleSheet.create({
         fontSize: 12,
         fontWeight: 'bold',
     },
+    emptyCartContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    emptyCartText: {
+        fontSize: 15,
+        textAlign: 'center',
+        color: '#555555',
+    },
 });
