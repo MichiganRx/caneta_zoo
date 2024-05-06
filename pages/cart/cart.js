@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, Alert } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCartAction } from '../../store';
 import { useNavigation } from '@react-navigation/native';
@@ -28,11 +28,29 @@ const CartScreen = () => {
     };
 
     const handleDelete = (index) => {
-        dispatch(removeFromCartAction(index));
+        Alert.alert(
+            'Confirmar Exclusão',
+            'Tem certeza que deseja excluir este produto do carrinho?',
+            [
+                {
+                    text: 'Cancelar',
+                    style: 'cancel',
+                },
+                {
+                    text: 'Excluir',
+                    onPress: () => dispatch(removeFromCartAction(index)),
+                    style: 'destructive',
+                },
+            ]
+        );
     };
 
     const handlePurchase = () => {
-        navigation.navigate('Purchase', { totalPrice: totalPrice });
+        if (cartItems.length === 0) {
+            Alert.alert('Carrinho Vazio', 'Seu carrinho está vazio. Adicione itens antes de finalizar a compra.');
+        } else {
+            navigation.navigate('Purchase', { totalPrice: totalPrice });
+        }
     };
 
     return (
