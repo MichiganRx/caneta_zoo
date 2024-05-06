@@ -53,28 +53,43 @@ const CartScreen = () => {
         }
     };
 
+    
+    const renderContent = () => {
+        if (cartItems.length === 0) {
+            return (
+                <View style={styles.emptyCartContainer}>
+                    <Text style={styles.emptyCartText}>Seu carrinho está vazio.</Text>
+                </View>
+            );
+        } else {
+            return (
+                <FlatList
+                    data={cartItems}
+                    renderItem={({ item, index }) => (
+                        <View style={styles.item}>
+                            <View style={styles.description}>
+                                <Image style={styles.image} source={item.imageSource} />
+                                <Text style={styles.name}>{item.description}</Text>
+                                <Text style={styles.price}>R$ {item.price}</Text>
+                            </View>
+                            <TouchableOpacity style={styles.button} onPress={() => handleDelete(index)}>
+                                <Image 
+                                    style={{height:20, width:15}}
+                                    source={require("../../assets/lixeira.png")}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    )}
+                    keyExtractor={(item, index) => index.toString()}
+                />
+            );
+        }
+    };
+
     return (
         <View style={styles.container}>
             <Header/>
-            <FlatList
-                data={cartItems}
-                renderItem={({ item, index }) => (
-                    <View style={styles.item}>
-                        <View style={styles.description}>
-                            <Image style={styles.image} source={item.imageSource} />
-                            <Text style={styles.name}>{item.description}</Text>
-                            <Text style={styles.price}>R$ {item.price}</Text>
-                        </View>
-                        <TouchableOpacity style={styles.button} onPress={() => handleDelete(index)}>
-                            <Image 
-                                style={{height:20, width:15}}
-                                source={require("../../assets/lixeira.png")}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                )}
-                keyExtractor={(item, index) => index.toString()}
-            />
+            {renderContent()}
             <TotalValue totalPrice={totalPrice} buttonText='Finalizar Compra' onPress={handlePurchase}/>
         </View>
     );
