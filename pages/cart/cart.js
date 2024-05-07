@@ -82,15 +82,15 @@ const CartScreen = () => {
                                 <Image style={styles.image} source={item.imageSource} />
                                 <Text style={styles.name}>{item.description}</Text>
                                 <Text style={styles.price}>R$ {item.price}</Text>
-                                <View style={styles.quantityContainer}>
-                                    <TouchableOpacity onPress={() => handleQuantityChange(index, (quantities[index] || 1) - 1)}>
-                                        <Text style={styles.quantityButton}>-</Text>
-                                    </TouchableOpacity>
-                                    <Text style={styles.quantity}>{quantities[index] || 1}</Text>
-                                    <TouchableOpacity onPress={() => handleQuantityChange(index, (quantities[index] || 1) + 1)}>
-                                        <Text style={styles.quantityButton}>+</Text>
-                                    </TouchableOpacity>
-                                </View>
+                            </View>
+                            <View style={styles.quantityContainer}>
+                                <TouchableOpacity onPress={() => handleQuantityChange(index, (quantities[index] || 1) - 1)} style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                    <Image source={require("../../assets/minus.png")} style={{ height: 10, width: 10 }}/>
+                                </TouchableOpacity>
+                                <Text style={styles.quantity}>{quantities[index] || 1}</Text>
+                                <TouchableOpacity onPress={() => handleQuantityChange(index, (quantities[index] || 1) + 1)} style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                    <Image source={require("../../assets/add.png")} style={{ height: 9, width: 9 }}/>
+                                </TouchableOpacity>
                             </View>
                             <TouchableOpacity style={styles.button} onPress={() => handleDelete(index)}>
                                 <Image 

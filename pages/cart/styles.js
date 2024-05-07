@@ -5,7 +5,6 @@ export default StyleSheet.create({
    container: {
         flex: 1,
         backgroundColor: '#fff',
-        paddingTop: 10,
     },
 
     item: {
@@ -79,11 +78,28 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    
     emptyCartText: {
         fontSize: 15,
         textAlign: 'center',
         color: '#555555',
     },
-    
+
+    quantityContainer: {
+        flexDirection: 'row',
+        marginLeft: 10,
+        gap: 5,
+        borderColor: '#cbbce6',
+        backgroundColor: '#d8cdec',
+        borderWidth: 1,
+        paddingHorizontal: 5,
+        borderRadius: 6
+    },
+
+    quantity: {
+        color: '#432659',
+        fontSize: 12,
+        fontWeight: '500',
+    },
     
 });

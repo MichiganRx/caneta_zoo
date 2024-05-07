@@ -30,7 +30,6 @@ const PasswordReset = () => {
                 }
             })
             .catch(error => {
-                console.error('Erro:', error);
                 Alert.alert('Erro', 'Ocorreu um erro ao conectar-se ao servidor.');
             });
     };
