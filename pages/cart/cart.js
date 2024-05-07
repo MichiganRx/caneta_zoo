@@ -12,17 +12,19 @@ const CartScreen = () => {
     const cartItems = useSelector(state => state.cart.cart);
     const dispatch = useDispatch();
     const [totalPrice, setTotalPrice] = useState(0);
+    const [quantities, setQuantities] = useState({});
     const navigation = useNavigation();
 
     useEffect(() => {
         calculateTotalPrice();
-    }, [cartItems]);
+    }, [cartItems, quantities]);
 
     const calculateTotalPrice = () => {
         let total = 0;
-        cartItems.forEach(item => {
+        cartItems.forEach((item, index) => {
             const price = parseFloat(item.price.replace(',', '.'));
-            total += price;
+            const quantity = quantities[index] || 1; // Default quantity is 1
+            total += price * quantity;
         });
         setTotalPrice(total.toFixed(2));
     };
@@ -38,11 +40,21 @@ const CartScreen = () => {
                 },
                 {
                     text: 'Excluir',
-                    onPress: () => dispatch(removeFromCartAction(index)),
+                    onPress: () => {
+                        const newQuantities = { ...quantities };
+                        delete newQuantities[index]; // Remove quantity of deleted item
+                        setQuantities(newQuantities);
+                        dispatch(removeFromCartAction(index));
+                    },
                     style: 'destructive',
                 },
             ]
         );
+    };
+
+    const handleQuantityChange = (index, quantity) => {
+        const newQuantities = { ...quantities, [index]: quantity };
+        setQuantities(newQuantities);
     };
 
     const handlePurchase = () => {
@@ -53,7 +65,6 @@ const CartScreen = () => {
         }
     };
 
-    
     const renderContent = () => {
         if (cartItems.length === 0) {
             return (
@@ -71,6 +82,15 @@ const CartScreen = () => {
                                 <Image style={styles.image} source={item.imageSource} />
                                 <Text style={styles.name}>{item.description}</Text>
                                 <Text style={styles.price}>R$ {item.price}</Text>
+                                <View style={styles.quantityContainer}>
+                                    <TouchableOpacity onPress={() => handleQuantityChange(index, (quantities[index] || 1) - 1)}>
+                                        <Text style={styles.quantityButton}>-</Text>
+                                    </TouchableOpacity>
+                                    <Text style={styles.quantity}>{quantities[index] || 1}</Text>
+                                    <TouchableOpacity onPress={() => handleQuantityChange(index, (quantities[index] || 1) + 1)}>
+                                        <Text style={styles.quantityButton}>+</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                             <TouchableOpacity style={styles.button} onPress={() => handleDelete(index)}>
                                 <Image 
