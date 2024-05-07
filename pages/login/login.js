@@ -20,14 +20,12 @@ const Login = () => {
             const data = await response.json();
 
             if (data.length > 0) {
-                console.log('Usuário autenticado:', data);
                 await AsyncStorage.setItem('username', username);
                 navigation.navigate('Products');
             } else {
                 Alert.alert('Erro', 'Nome de usuário ou senha incorretos.');
             }
         } catch (error) {
-            console.error('Erro ao tentar fazer login:', error);
             Alert.alert('Erro', 'Ocorreu um erro ao tentar fazer login.');
         }
     };

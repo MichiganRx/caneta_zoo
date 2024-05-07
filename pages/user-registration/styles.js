@@ -85,7 +85,6 @@ export default StyleSheet.create({
     
     imageButtonText: {
         color: '#432659',
-
         fontSize: 12,
     },
 });

@@ -23,10 +23,10 @@ const PurchaseScreen = ({ route }) => {
 
     const handlePaymentMethodChange = (method) => {
         setPaymentMethod(method);
-    };
+        setChecked(method);
+    };        
 
     const handleFinalize = () => {
-     
         if (!paymentMethod || !cardNumber || !cvc || !state || !city || !address) {
             Alert.alert(
                 'Campos Incompletos',
@@ -55,7 +55,6 @@ const PurchaseScreen = ({ route }) => {
     };
 
     const handleCVCChange = (text) => {
-      
         const formattedText = text.replace(/\D/g, '');
         setCVC(formattedText);
     };
@@ -68,12 +67,12 @@ const PurchaseScreen = ({ route }) => {
                     <Text style={styles.titleContainer}>Forma de Pagamento:</Text>
                     <View style={styles.containerInfo}>
                         <View style={styles.paymentMethodContainer}>
-                            <TouchableOpacity onPress={() => handlePaymentMethodChange('credit')}>
+                            <TouchableOpacity>
                                 <View style={styles.paymentMethodOption}>
                                     <RadioButton
                                         value="credit"
                                         status={ checked === 'credit' ? 'checked' : 'unchecked' }
-                                        onPress={() => setChecked('credit')}
+                                        onPress={() => handlePaymentMethodChange('credit')}
                                     />
                                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                         <Image source={require('../../assets/debit-card.png')} style={{ width: 20, height: 20, marginRight: 5 }} />
@@ -81,12 +80,12 @@ const PurchaseScreen = ({ route }) => {
                                     </View>
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => handlePaymentMethodChange('debit')}>
+                            <TouchableOpacity>
                                 <View style={styles.paymentMethodOption}>
                                     <RadioButton
                                         value="debit"
                                         status={ checked === 'debit' ? 'checked' : 'unchecked' }
-                                        onPress={() => setChecked('debit')}
+                                        onPress={() => handlePaymentMethodChange('debit')}
                                     />
                                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                         <Image source={require('../../assets/credit-card.png')} style={{ width: 20, height: 20, marginRight: 5 }} />

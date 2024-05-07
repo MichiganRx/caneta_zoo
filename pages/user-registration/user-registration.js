@@ -20,17 +20,10 @@ const UserRegistration = () => {
             quality: 1,
         });
 
-        console.log("ImagePicker Result:", result);
-
         if (!result.cancelled) {
             const imageUri = result.assets[0].uri;
             setImage(imageUri);
-            try {
-                await AsyncStorage.setItem('userImage', imageUri);
-                console.log("Image stored in AsyncStorage");
-            } catch (error) {
-                console.log('Error storing image:', error);
-            }
+            await AsyncStorage.setItem('userImage', imageUri);
         }
     };
 
@@ -61,7 +54,6 @@ const UserRegistration = () => {
             }
         })
         .catch(error => {
-            console.error('Erro:', error);
             Alert.alert('Erro', 'Ocorreu um erro ao cadastrar usuário');
         });
     };

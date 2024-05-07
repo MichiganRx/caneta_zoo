@@ -12,17 +12,13 @@ export default function Header() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const storedImage = await AsyncStorage.getItem('userImage');
-        const storedUsername = await AsyncStorage.getItem('username');
-        if (storedImage !== null) {
-          setUserImage({ uri: storedImage });
-        }
-        if (storedUsername !== null) {
-          setUsername(storedUsername);
-        }
-      } catch (error) {
-        console.log('Error retrieving user data:', error);
+      const storedImage = await AsyncStorage.getItem('userImage');
+      const storedUsername = await AsyncStorage.getItem('username');
+      if (storedImage !== null) {
+        setUserImage({ uri: storedImage });
+      }
+      if (storedUsername !== null) {
+        setUsername(storedUsername);
       }
     };
     fetchData();
@@ -37,13 +33,9 @@ export default function Header() {
   };
 
   const handleLogout = async () => {
-    try {
-      await AsyncStorage.removeItem('userImage');
-      await AsyncStorage.removeItem('username');
-      navigation.navigate('Login');
-    } catch (error) {
-      console.log('Error logging out:', error);
-    }
+    await AsyncStorage.removeItem('userImage');
+    await AsyncStorage.removeItem('username');
+    navigation.navigate('Login');
   };
 
   return (
@@ -67,7 +59,7 @@ export default function Header() {
         </View>
         <TouchableOpacity onPress={navigateToCart}>
           <Image 
-            style={{height:20, width:20}}
+            style={{height:25, width:28}}
             source={require("../.././assets/cart.png")}
           />
         </TouchableOpacity>
