@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { Alert } from 'react-native';
 
 export const addToCart = 'addToCart';
 export const removeFromCart = 'removeFromCart';
@@ -20,10 +21,18 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case addToCart:
-      return {
-        ...state,
-        cart: [...state.cart, action.payload.product]
-      };
+      const newProduct = action.payload.product;
+      const existingProduct = state.cart.find(item => item.id === newProduct.id);
+      if (existingProduct) {
+        Alert.alert('', 'Este produto já está no carrinho!');
+        return state;
+      } else {
+        Alert.alert('', 'Produto adicionado ao carrinho!');
+        return {
+          ...state,
+          cart: [...state.cart, newProduct]
+        };
+      }
     case clearCart:
       return {
         ...state,

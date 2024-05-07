@@ -16,22 +16,14 @@ const CarouselComponent = ({ data }) => {
     }, []);
 
     const loadCartFromStorage = async () => {
-        try {
-            const cartData = await AsyncStorage.getItem(STORAGE_KEY);
-            if (cartData !== null) {
-                setCart(JSON.parse(cartData));
-            }
-        } catch (error) {
-            console.error('Error loading cart from storage:', error);
+        const cartData = await AsyncStorage.getItem(STORAGE_KEY);
+        if (cartData !== null) {
+            setCart(JSON.parse(cartData));
         }
     };
 
     const saveCartToStorage = async (cartData) => {
-        try {
-            await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(cartData));
-        } catch (error) {
-            console.error('Error saving cart to storage:', error);
-        }
+        await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(cartData));
     };
 
     const handleBuy = (product) => {
@@ -43,13 +35,14 @@ const CarouselComponent = ({ data }) => {
     const renderCarouselItem = ({ item }) => (
         <View style={styles.cardContainer}>
             <Productscard
+                id={item.id}
                 description={item.description}
                 imageSource={item.imageSource}
                 price={item.price}
-                onBuy={() => handleBuy(item)}
+                handleBuy={() => handleBuy(item)}
             />
         </View>
-    );
+    );    
 
     return (
         <View style={styles.carouselContainer}>

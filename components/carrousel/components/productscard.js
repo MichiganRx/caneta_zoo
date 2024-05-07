@@ -4,13 +4,12 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../store';
 import styles from './styles';
 
-const Productscard = ({ description, imageSource, price }) => {
+const Productscard = ({ id, description, imageSource, price }) => {
   const dispatch = useDispatch();
 
   const handleBuy = () => {
-    const product = { description, imageSource, price };
+    const product = { id, description, imageSource, price };
     dispatch({ type: addToCart, payload: { product } });
-    Alert.alert('', 'Produto adicionado ao carrinho!');
   };
 
   return (
@@ -18,7 +17,7 @@ const Productscard = ({ description, imageSource, price }) => {
       <Image style={styles.image} source={imageSource} />
       <Text style={styles.description}>{description}</Text>
       <Text style={styles.price}>R$ {price}</Text>
-      <TouchableOpacity style={styles.button} onPress={handleBuy}>
+      <TouchableOpacity style={styles.button} onPress={() => handleBuy()}>
         <Image 
             style={{height:18, width:18}}
             source={require("../../../assets/add-to-cart.png")}
