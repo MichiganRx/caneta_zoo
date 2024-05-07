@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, ImageBackground, Image, Alert } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -20,6 +21,7 @@ const Login = () => {
 
             if (data.length > 0) {
                 console.log('Usuário autenticado:', data);
+                await AsyncStorage.setItem('username', username);
                 navigation.navigate('Products');
             } else {
                 Alert.alert('Erro', 'Nome de usuário ou senha incorretos.');

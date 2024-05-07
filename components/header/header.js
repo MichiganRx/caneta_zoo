@@ -36,6 +36,16 @@ export default function Header() {
     navigation.navigate('CartScreen');
   };
 
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.removeItem('userImage');
+      await AsyncStorage.removeItem('username');
+      navigation.navigate('Login');
+    } catch (error) {
+      console.log('Error logging out:', error);
+    }
+  };
+
   return (
     <View style={styles.header}>
       <View style={styles.containerContentHeader}>
@@ -93,7 +103,7 @@ export default function Header() {
                   />
                 <Text style={styles.menuItem}>Meu Carrinho</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.optionsMenu}>
+              <TouchableOpacity onPress={handleLogout} style={styles.optionsMenu}>
                 <Image 
                     style={{height:15, width:15}}
                     source={require("../.././assets/exit.png")}
