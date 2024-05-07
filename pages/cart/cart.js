@@ -23,7 +23,7 @@ const CartScreen = () => {
         let total = 0;
         cartItems.forEach((item, index) => {
             const price = parseFloat(item.price.replace(',', '.'));
-            const quantity = quantities[index] || 1; // Default quantity is 1
+            const quantity = quantities[index] || 1;
             total += price * quantity;
         });
         setTotalPrice(total.toFixed(2));
@@ -42,7 +42,7 @@ const CartScreen = () => {
                     text: 'Excluir',
                     onPress: () => {
                         const newQuantities = { ...quantities };
-                        delete newQuantities[index]; // Remove quantity of deleted item
+                        delete newQuantities[index];
                         setQuantities(newQuantities);
                         dispatch(removeFromCartAction(index));
                     },
