@@ -69,6 +69,7 @@ const PasswordReset = () => {
                 <TouchableOpacity style={styles.button} onPress={saveData}>
                     <Text style={styles.buttonText}>Confirmar</Text>
                 </TouchableOpacity>
+                
             </View>
         </ImageBackground>
     );
