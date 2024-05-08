@@ -14,12 +14,13 @@ const Login = () => {
             Alert.alert("Erro", "Por favor, preencha todos os campos.");
             return;
         }
-
+    
         try {
             const response = await fetch('http://172.16.42.98/api-caneta-zoo/login/?login=' + username + '&senha=' + password);
             const data = await response.json();
-
+    
             if (data.length > 0) {
+                await AsyncStorage.setItem('nome', data[0].nome);
                 await AsyncStorage.setItem('username', username);
                 navigation.navigate('Products');
             } else {

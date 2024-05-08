@@ -13,7 +13,7 @@ export default function Header() {
   useEffect(() => {
     const fetchData = async () => {
       const storedImage = await AsyncStorage.getItem('userImage');
-      const storedUsername = await AsyncStorage.getItem('username');
+      const storedUsername = await AsyncStorage.getItem('nome');
       if (storedImage !== null) {
         setUserImage({ uri: storedImage });
       }
