@@ -67,7 +67,7 @@ const PasswordReset = () => {
                     onChangeText={setPasswordConfirm} 
                 />
                 <TouchableOpacity style={styles.button} onPress={saveData}>
-                    <Text style={styles.buttonText}>Cadastrar</Text>
+                    <Text style={styles.buttonText}>Confirmar</Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground>
